@@ -7,7 +7,10 @@
 			"gid": 0
 		},
 		"args": [
-			"sh"
+			"sh",
+			"$SCRIPT_FILE",
+			"$SRC_FILE",
+			"$EXE_FILE"
 		],
 		"env": [
 			"PATH=/usr/lib/jvm/java-1.8-openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
@@ -51,7 +54,7 @@
 		"noNewPrivileges": true
 	},
 	"root": {
-		"path": "rootfs",
+		"path": "../rootfs",
 		"readonly": true
 	},
 	"hostname": "runc",
@@ -117,7 +120,18 @@
 				"nodev",
 				"ro"
 			]
-		}
+		},
+                {
+                        "destination": "/icpc/data",
+                        "type": "none",
+                        "source": "$DATA_DIR",
+                        "options": [
+                                "bind",
+                                "ro",
+                                "nodev",
+                                "nosuid"
+                        ]
+                }
 	],
 	"linux": {
 		"uidMappings": [

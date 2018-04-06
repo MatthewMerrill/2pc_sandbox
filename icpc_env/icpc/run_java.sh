@@ -1,5 +1,3 @@
-alias javac=/usr/lib/jvm/java-1.8-openjdk/bin/javac
-
-javac $1
-java $2
+javac data/$1
+java -cp data $2
 
